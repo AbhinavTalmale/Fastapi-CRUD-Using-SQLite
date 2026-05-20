@@ -63,7 +63,7 @@ def tracks(session: Session = Depends(get_session)):
     # select * from
     stmt = select(TrackModel)
     result = session.exec(stmt).all()
-    return result
+    return result.id
 
 
 # ---------------------------------------------------------------------------------------------------
@@ -77,7 +77,7 @@ def track(track_id: int, response: Response, session: Session = Depends(get_sess
         # if a track with given ID doesn't exist, set 404 code and return string
         response.status_code = 404
         return "Track not found"
-    return track
+    return "Successful"
 
 
 # ---------------------------------------------------------------------------------------------------
